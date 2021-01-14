@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use App\Http\Controllers\ZamowieniaController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::resource('zamowienia', ZamowieniaController::class);
+Route::resource('order', OrderController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
