@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ZamowieniaController;
+use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\ContractorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,6 +18,8 @@ use App\Http\Controllers\ZamowieniaController;
 |
 */
 Route::resource('order', OrderController::class);
+Route::resource('order_item', OrderItemController::class);
+Route::resource('contractor', ContractorController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

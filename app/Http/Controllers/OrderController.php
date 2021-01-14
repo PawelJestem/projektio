@@ -14,10 +14,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $zamowienia = new Order();
-        $zamowienia = $zamowienia->paginate(10);
-        
-        return response()->json($zamowienia);
+        //$zamowienia = new Order();
+       // $zamowienia = $zamowienia->paginate(10);
+        $zamowienia = Order::all()->toArray();
+         return $zamowienia;
+        //return response()->json($zamowienia);
     }
 
     /**
