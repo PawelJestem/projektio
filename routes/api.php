@@ -17,6 +17,7 @@ use App\Http\Controllers\ContractorController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('getOrderWithNip/{nip}', ['uses' => 'App\Http\Controllers\OrderController@getOrderWithNip']);
 Route::resource('order', OrderController::class);
 Route::resource('order_item', OrderItemController::class);
 Route::resource('contractor', ContractorController::class);

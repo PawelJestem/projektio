@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Contractor;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -94,9 +94,30 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
+    public function getOrderWithNip($nip){
+
+        $orders = Order::all();
+        $contractor = Contractor::where('NIP', $nip) -> first();
+        $i = 0;
+        $order_dto[] = new Order;
+        foreach($orders as $order){
+            if($order->id_kontrahenta == $contractor->id){
+           
+            @$order_dto[$i]->id = $order->id;
+            @$order_dto[$i]->nr_zamowienia = $order->nr_zamowienia;
+            @$order_dto[$i]->status_zamowienia = $order->status_zamowienia;
+            @$order_dto[$i]->wartosc_zamowienia = $order->wartosc_zamowienia;
+            
+        }
+        $i++;
+        }
+        return $order_dto;
+    }
+
     public function destroy(Order $order)
     {
         $order->delete();
         return response()->json(["status"=>"deleted"]);
     }
 }
+
